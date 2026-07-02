@@ -9,15 +9,23 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    const decision = prompt("Dude pick your choice already (rock, paper, or scissors?)");
+    let decision = prompt("Dude pick your choice already (rock, paper, or scissors?)");
     const choices = ["rock", "paper", "scissors"];
     if (!(choices.includes(decision.toLowerCase()))){
-        console.log("Try again bozo, bro cannot spell");
-        decision = getHumanChoice();
+        decision = tryAgain();
     }
     return decision;
 }
 
+function tryAgain(){
+    let decision = prompt("Try again bozo, bro cannot spell (rock, paper, or scissors?)");
+    const choices = ["rock", "paper", "scissors"];
+    if (!(choices.includes(decision.toLowerCase()))){
+        console.log("Try again bozo, bro cannot spell");
+        decision = tryAgain();
+    }
+    return decision;
+}
 function initiateRound(human, machine){
     human = human.toLowerCase();
     machine = machine.toLowerCase();
