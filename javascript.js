@@ -54,10 +54,23 @@ function initiateRound(human, machine){
     }
 }
 
+function playGame(){
+    for (let i = 0; i <=4; i++){
+        let compdecision = getComputerChoice();
+        let humandecision = getHumanChoice();
+        console.log(`COMPUTER: ${compdecision}`);
+        console.log(`HUMAN: ${humandecision}`);
+        initiateRound(humandecision, compdecision);
+    }
+    if (humanScore > machineScore) {
+        console.log("bro actually won lol");
+        console.log(`Your score: ${humanScore} and your opponent's: ${machineScore} `);
+    } else {
+        console.log("you did not win loser, why did you think you would win LOL!");
+        console.log(`Your score: ${humanScore} and your opponent's: ${machineScore} `);
+    }
+    console.log("END GAME");
+}
 
-let compdecision = getComputerChoice();
-let humandecision = getHumanChoice();
 
-console.log(`COMPUTER: ${compdecision}`);
-console.log(`HUMAN: ${humandecision}`);
-initiateRound(humandecision, compdecision);
+playGame();
