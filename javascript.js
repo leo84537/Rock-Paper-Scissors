@@ -10,6 +10,11 @@ function getComputerChoice(){
 
 function getHumanChoice(){
     const decision = prompt("Dude pick your choice already (rock, paper, or scissors?)");
+    const choices = ["rock", "paper", "scissors"];
+    if (!(choices.includes(decision.toLowerCase()))){
+        console.log("Try again bozo, bro cannot spell");
+        decision = getHumanChoice();
+    }
     return decision;
 }
 
