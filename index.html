@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<script src="javascript.js"></script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="scores">
+        <div class="user">
+            <p class="userscore">Your Score: 0</p>
+            <p class="userchoice">Your Choice: None</p>
+        </div>
+        <div class="computer">
+            <p class="computerscore">Robot Score: 0</p>
+            <p class="computerchoice">Computer Choice: None</p>
+        </div>
+        <text class="roundresult">Round Result: None</text>
+    </div>
+    <div class="decisions">
+        <button class="rock">ROCK</button>
+        <button class="paper">PAPER</button>
+        <button class="scissors">SCISSORS</button>
+    </div>
+    <text class="gameresult">Game Result: NONE YET</text>
+    <text class="finalscore"> </text>
+    <script src="javascript.js"></script>
 </body>
 </html>

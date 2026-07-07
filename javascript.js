@@ -26,6 +26,8 @@ function tryAgain(){
     }
     return decision;
 }
+const roundres = document.querySelector(".roundresult");
+
 function initiateRound(human, machine){
     human = human.toLowerCase();
     machine = machine.toLowerCase();
@@ -34,34 +36,34 @@ function initiateRound(human, machine){
         case "rock":
             if (machine == "paper") {
                 machineScore++;
-                console.log("YOU LOST BOZO!");
+                roundres.textContent = "YOU LOST BOZO!";
             } else if (machine == "scissors") {
                 humanScore++;
-                console.log("bro got lucky lol +1");
+                roundres.textContent = "bro got lucky lol +1";
             } else {
-                console.log("boooooring, its a tie...");
+                roundres.textContent = "boooooring, its a tie...";
             }
             break;
         case "paper":
             if (machine == "scissors") {
                 machineScore++;
-                console.log("YOU LOST BOZO!");
+                roundres.textContent = "YOU LOST BOZO!";
             } else if (machine == "rock") {
                 humanScore++;
-                console.log("bro got lucky lol +1");
+                roundres.textContent = "bro got lucky lol +1";
             } else {
-                console.log("boooooring, its a tie...");
+                roundres.textContent = "boooooring, its a tie...";
             }
             break;
         case "scissors":
             if (machine == "rock") {
                 machineScore++;
-                console.log("YOU LOST BOZO!");
+                roundres.textContent = "YOU LOST BOZO!";
             } else if (machine == "paper") {
                 humanScore++;
-                console.log("bro got lucky lol +1");
+                roundres.textContent = "bro got lucky lol +1";
             } else {
-                console.log("boooooring, its a tie...");
+                roundres.textContent = "boooooring, its a tie...";
             }
             break;
     }
@@ -85,5 +87,64 @@ function playGame(){
     console.log("END GAME");
 }
 
+const gameres = document.querySelector(".gameresult");
+const finalscore = document.querySelector(".finalscore");
 
-playGame();
+function checkEndGame(){
+    if (Math.max(humanScore, machineScore) === 5){
+        if (humanScore > machineScore) {
+            gameres.textContent = "bro actually won lol";
+            finalscore.textContent = `Your score: ${humanScore} and your opponent's: ${machineScore} `;
+        } else {
+            gameres.textContent = "you did not win loser, why did you think you would win LOL!";
+            finalscore.textContent = `Your score: ${humanScore} and your opponent's: ${machineScore} `;
+        }
+    }
+}
+
+const rockbutton = document.querySelector(".rock");
+const paperbutton = document.querySelector(".paper");
+const scissorsbutton = document.querySelector(".scissors");
+
+const user = document.querySelector(".userscore");
+const computer = document.querySelector(".computerscore");
+const userchoice = document.querySelector(".userchoice");
+const computerchoice = document.querySelector(".computerchoice");
+
+rockbutton.addEventListener('click', function(e){
+    console.log("rock button clicked");
+    e.preventDefault();
+    const c = getComputerChoice();
+    initiateRound("rock", c);
+    user.textContent = "Your Score: " + String(humanScore);
+    computer.textContent = "Robot Score: " + String(machineScore);
+    userchoice.textContent = "Your Choice: Rock";
+    computerchoice.textContent = `Computer Choice: ${c}`;
+    checkEndGame();
+    
+})
+paperbutton.addEventListener('click', function(e){
+    console.log("paper button clicked");
+    e.preventDefault();
+    const c = getComputerChoice();
+    initiateRound("paper",c);
+    user.textContent = "Your Score: " + String(humanScore);
+    computer.textContent = "Robot Score: " + String(machineScore);
+    userchoice.textContent = "Your Choice: Paper";
+    computerchoice.textContent = `Computer Choice: ${c}`;
+    checkEndGame();
+})
+scissorsbutton.addEventListener('click', function(e){
+    console.log("scissors button clicked");
+    e.preventDefault();
+    const c = getComputerChoice();
+    initiateRound("scissors",c);
+    user.textContent = "Your Score: " + String(humanScore);
+    computer.textContent = "Robot Score: " + String(machineScore);
+    userchoice.textContent = "Your Choice: Scissors";
+    computerchoice.textContent = `Computer Choice: ${c}`;
+    checkEndGame();
+})
+
+
+
